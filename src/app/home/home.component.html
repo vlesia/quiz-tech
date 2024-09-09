@@ -1,0 +1,35 @@
+<div class="p-6 bg-gray-100 min-h-screen">
+  <ng-container *ngIf="quizzes$ | async as quizzes; else loading">
+    <a
+      class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition mb-6"
+      [routerLink]="['/play', randomQuizId$ | async]"
+      >I'm lucky</a
+    >
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        class="bg-white p-4 rounded-lg shadow-lg flex flex-col justify-between"
+        *ngFor="let quiz of quizzes; let i = index"
+      >
+        <div>
+          <h2
+            class="mb-2"
+          >
+            Category: <span [innerHTML]="quiz.category"></span>
+          </h2>
+          <p class="mb-4">
+            Total questions: {{ quiz.items.length }}
+          </p>
+        </div>
+        <a
+          [routerLink]="['/play', quiz.id]"
+          class="inline-block bg-green-500 text-white text-center font-semibold py-2 px-4 rounded hover:bg-green-600 transition"
+          >Play</a
+        >
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Loading...</p>
+</ng-template>

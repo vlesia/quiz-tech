@@ -1,0 +1,16 @@
+<div class="text-center bg-gray-100 p-6 rounded-lg shadow-lg">
+  <h1 class="text-green-500 mb-5">Quiz Finished!</h1>
+  <p class="mb-4">
+    You got {{ correctAnswers }} out of {{ totalQuestions }} questions correct!
+  </p>
+  <p class="mb-5">
+    You spent: {{ timeSpent }} minutes on this quiz.
+  </p>
+
+  <button
+    class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded transition duration-300"
+    (click)="goHome()"
+  >
+    Go Home
+  </button>
+</div>
